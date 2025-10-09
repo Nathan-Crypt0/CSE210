@@ -21,6 +21,9 @@ class Program
         else if (menuChoice = 4) 
         (menuAnswer = Console.WriteLine("4. Load load journal to file"))
 
+        else (menuChoice = 5)
+        (menuAnswer = Console.WriteLine("5. Quit."))
+
 
     }
 }
