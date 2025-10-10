@@ -32,7 +32,9 @@ class Program
         }
         else if (menuAnswer == 5)
         {
-            Console.WriteLine("Qutting.");    
+            Console.WriteLine("Goodbye!");
+            Environment.Exit(0);
+  
         }
         else
         {
