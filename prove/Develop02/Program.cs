@@ -11,16 +11,20 @@ class Program
         Console.WriteLine("4. Load journal from file.");
         Console.WriteLine("5. Quit.");
 
+        SentencePicker picker = new SentencePicker();
+        SaveLoadFile load = new SaveLoadFile();
+        
         string menuChoice = Console.ReadLine();
         int menuAnswer = int.Parse(menuChoice);
 
         if (menuAnswer == 1)
         {
-            Console.WriteLine("Writing to journal.");
+            picker.PickSentence();
+            Console.ReadLine();
         }
         else if (menuAnswer == 2)
         {
-            Console.WriteLine("Displaying old entries.");
+            load.SaveFile();
         }
         else if (menuAnswer == 3)
         {

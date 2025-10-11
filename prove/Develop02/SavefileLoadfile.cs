@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 
-class SaveLoadFile
+ public class SaveLoadFile
 {
-    static void Main()
+    public void SaveFile()
     {
         string filename = "MyJournalFiles.txt";
 
