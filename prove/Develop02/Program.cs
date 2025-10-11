@@ -4,48 +4,59 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Please pick a menu option. Enter the number to pick:");
-        Console.WriteLine("1. Write to journal.");
-        Console.WriteLine("2. Display old entries.");
-        Console.WriteLine("3. Save journal to file.");
-        Console.WriteLine("4. Load journal from file.");
-        Console.WriteLine("5. Quit.");
-
+        Journal journal = new Journal();
         SentencePicker picker = new SentencePicker();
-        SaveLoadFile load = new SaveLoadFile();
-        
-        string menuChoice = Console.ReadLine();
-        int menuAnswer = int.Parse(menuChoice);
 
-        if (menuAnswer == 1)
+        while (true)
         {
-            picker.PickSentence();
-            Console.ReadLine();
-        }
-        else if (menuAnswer == 2)
-        {
-            load.SaveFile();
-        }
-        else if (menuAnswer == 3)
-        {
-            Console.WriteLine("Save journal to file.");
-        }
-        else if (menuAnswer == 4)
-        {
-            Console.WriteLine("Loading from journal.");
-        }
-        else if (menuAnswer == 5)
-        {
-            Console.WriteLine("Goodbye!");
-            Environment.Exit(0);
-  
-        }
-        else
-        {
-            Console.WriteLine("Invalid choice. Please pick a number between 1 and 5.");
-        }
+            // Display menu
+            Console.WriteLine("\nMenu:");
+            Console.WriteLine("1. Write a new entry");
+            Console.WriteLine("2. Display journal");
+            Console.WriteLine("3. Save journal to file");
+            Console.WriteLine("4. Load journal from file");
+            Console.WriteLine("5. Quit");
 
-        
+            Console.Write("Enter your choice: ");
+            string choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                string prompt = picker.GetRandomPrompt();
+                Console.WriteLine($"Prompt: {prompt}");
+                Console.Write("Your response: ");
+                string response = Console.ReadLine();
+                string date = DateTime.Now.ToShortDateString();
+                string entry = date + " | " + prompt + " | " + response;
+
+                journal.AddEntry(entry);
+                Console.WriteLine("Entry added!");
+            }
+            else if (choice == "2")
+            {
+                journal.Display();
+            }
+            else if (choice == "3")
+            {
+                Console.Write("Enter filename to save: ");
+                string filename = Console.ReadLine();
+                journal.SaveToFile(filename);
+            }
+            else if (choice == "4")
+            {
+                Console.Write("Enter filename to load: ");
+                string filename = Console.ReadLine();
+                journal.LoadFromFile(filename);
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("Goodbye!");
+                break;
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice. Please pick 1-5.");
+            }
+        }
     }
 }
-
