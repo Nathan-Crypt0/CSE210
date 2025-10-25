@@ -1,28 +1,30 @@
 using System;
 
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
+        Reference reference = new Reference("Proverbs", 3, 5, 6);
+        Scripture scripture = new Scripture(reference,
+            "Trust in the Lord with all thine heart and lean not unto thine own understanding.");
+
         while (true)
         {
-            Console.WriteLine("Welcome to the scripture memorizer program.");
-            Console.WriteLine("\nmenu:");
-            Console.WriteLine("1. Begin");
-            Console.WriteLine("2. Quit");
-            string choice = Console.ReadLine();
+            scripture.Display();
+            Console.WriteLine("Press Enter to hide more words or type 'quit' to end.");
+            string input = Console.ReadLine();
 
-            if (choice == "1")
-            { }
+            if (input != null && input.Trim().ToLower() == "quit")
+                break;
 
-            else if (choice == "2")
+            scripture.HideRandomWords();
+
+            if (scripture.AllHidden())
             {
-                Console.WriteLine("Goodbye!");
+                scripture.Display();
+                Console.WriteLine("All words are hidden.");
                 break;
             }
-
-            else 
-            Console.WriteLine("Invalid choice. Please pick 1-2.");
         }
     }
 }
