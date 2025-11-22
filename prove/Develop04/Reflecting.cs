@@ -34,12 +34,12 @@ public class Reflection : Activity
 
     public void Run()
     {
-        // Standard intro from parent class
+        
         DisplayStartingMessage();
 
         int duration = GetDuration();
 
-        // Choose a random prompt
+        
         Random random = new Random();
         string prompt = _prompts[random.Next(_prompts.Count)];
 
@@ -56,17 +56,17 @@ public class Reflection : Activity
 
         while (DateTime.Now < endTime)
         {
-            // Pick a random question
+            
             string question = _questions[random.Next(_questions.Count)];
             Console.WriteLine($"> {question}");
-            ShowSpinner(6); // show spinner for a few seconds before next question
+            ShowSpinner(6); 
             Console.WriteLine();
         }
 
         DisplayEndingMessage();
     }
 
-    // Simple spinner animation
+    
     private void ShowSpinner(int seconds)
     {
         string[] spinner = { "|", "/", "-", "\\" };
@@ -82,7 +82,7 @@ public class Reflection : Activity
         }
     }
 
-    // Simple countdown method
+    
     private void ShowCountdown(int seconds)
     {
         for (int i = seconds; i > 0; i--)

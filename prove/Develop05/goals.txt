@@ -1,0 +1,4 @@
+40
+Simple|Read book|read book|10|True
+Eternal|Pray|Say prayers each night|10
+Checklist|Wake up on time|10 times of waking up on time|10|10|100|1
